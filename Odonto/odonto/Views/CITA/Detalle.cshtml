@@ -1,0 +1,132 @@
+﻿@model odonto.Models.PacienteViewModel
+
+@{
+    ViewBag.Title = "Detalle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle de Cita</h2>
+
+<div id="mensaje"></div>
+@using (Html.BeginForm("Edit", "CITA", null, FormMethod.Post, new { @class = "well", @style = "margin-top: 40px;", @id = "modificar-cita" }))
+{
+    
+
+    <div class="form-horizontal">
+        <h4>Datos</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cita.ID_DOCTOR, "Doctor", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="margin-top: 7px;">
+                <span>@Model.cita.DOCTOR.NOMBRE @Model.cita.DOCTOR.APELLIDO</span>
+                <input type="hidden" id="ID" value="@Model.ID" />
+                <input type="hidden" id="id_cita" value="@Model.cita.ID"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.cita.ID_PACIENTE, "Paciente", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="margin-top: 7px;">
+                <span>@Model.cita.PACIENTE.NOMBRE @Model.cita.PACIENTE.APELLIDO</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Fecha", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" style="margin-top: 7px;">
+               <span>@Model.cita.FECHA</span>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="update" value="true">
+}
+
+@Html.Partial("DetalleCita",Model)
+
+<div class="modal fade" id="modalhistorial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Selector de Tratamiento</h4>
+            </div>
+            <div class="modal-body" id="bodymodal">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 style="text-align: center;">Nombre del Diente</h4>
+                        <div class="col-md-6 col-md-offset-3" id="svg"></div>
+                    </div>
+                    <div class="col-md-6" style="margin-top:50px;">
+                        <div class="form-group" style="margin-bottom:45px;">
+                            @Html.LabelFor(model => model.Id_TRATAMIENTO, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownList("ID_TRATAMIENTO", null, "Seleccione..", htmlAttributes: new { @class = "form-control select2", @style = "width:194px;" })
+                                @Html.ValidationMessageFor(model => model.ID_PACIENTE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:95px;">
+                            @Html.Label("Color", htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                <input id="color" class="form-control jscolor" value="000000" style="width:194px;" />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:148px;">
+                            @Html.LabelFor(model => model.FECHA_TRATA, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-7" style="padding-right:35px;">
+                                <div class="input-group date">
+                                    @Html.EditorFor(model => model.FECHA_TRATA, new { htmlAttributes = new { @class = "form-control", @placeholder = "dd/mm/aaaa" } })
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="diente" />
+                        <input type="hidden" id="dienteReal" />
+                        <input type="hidden" id="position" />
+                        <input type="hidden" id="check" />
+                        <div class="form-group" style="margin-bottom:220px;">
+                            @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.TextAreaFor(model => model.descripcion, htmlAttributes: new { @class = "form-control", @style = "width:194px;" })
+                                @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+                                <input type="hidden" id="id_historia" name="id_historia" value="0" />
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom:50px;">
+                            <a class="btn btn-success" style="margin-left:15px;" id="agregar_tr_diente">Agregar</a>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <table class="table" id="tablaHistoria">
+                            <thead>
+                                <tr>
+                                    <th>Tratamiento</th>
+                                    <th>Diente</th>
+                                    <th>Color</th>
+                                    <th>Fecha</th>
+                                    <th>Descripcion</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <a id="save" class="btn btn-primary">Guardar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
+</div>
+

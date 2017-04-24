@@ -1,0 +1,1117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NEOODONTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ASEGURADORA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="BANCO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="CITA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DOCTOR" Type="bigint" Nullable="false" />
+    <Property Name="ID_PACIENTE" Type="bigint" Nullable="false" />
+    <Property Name="FECHA" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+    <Property Name="TIPO_COBRO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CONTRATO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DOCTOR" Type="bigint" />
+    <Property Name="ID_INSTITUCION" Type="bigint" />
+    <Property Name="ID_ASEGURADORA" Type="bigint" Nullable="false" />
+    <Property Name="FECHA_INICIO" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="FECHA_FIN" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="DETALLE_CONTARTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="MONTO" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+    <Property Name="ID_CONTRATO" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DETALLE_HISTORIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TRATA_DIENTE" Type="bigint" Nullable="false" />
+    <Property Name="ID_HISTORIAL" Type="bigint" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="POSICION" Type="int" />
+    <Property Name="FECHA" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="DIENTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="7" />
+    <Property Name="SVG" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="DIRECCION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" Nullable="false" />
+    <Property Name="TIPO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_DIRECCION" Type="bigint" />
+    <Property Name="ID_PACIENTE" Type="bigint" />
+    <Property Name="ID_DOCTOR" Type="bigint" />
+    <Property Name="ID_SECRETARIA" Type="bigint" />
+    <Property Name="ID_GERENTE" Type="bigint" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="DOCTOR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ROL" Type="bigint" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SEGUNDO_NOMBRE" Type="varchar" MaxLength="30" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SEGUNDO_APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LOGIN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="30" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="DOCTOR_INTITUCION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DOCTOR" Type="bigint" Nullable="false" />
+    <Property Name="ID_INSTITUCION" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DOCTOR_SECRETARIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" Nullable="false" />
+    <Property Name="ID_DOCTOR" Type="bigint" Nullable="false" />
+    <Property Name="ID_SECRETARIA" Type="bigint" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="ENFERMEDAD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="TIPO" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="GERENTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ROL" Type="bigint" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SEGUNDO_NOMBRE" Type="varchar" MaxLength="30" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SEGUNDO_APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LOGIN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="30" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="HISTORIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PACIENTE" Type="bigint" Nullable="false" />
+    <Property Name="ID_CITA" Type="bigint" />
+    <Property Name="DIENTE" Type="varchar" MaxLength="50" />
+    <Property Name="SVG_DOCTOR" Type="varchar(max)" />
+    <Property Name="SVG_PACIENTE" Type="varchar(max)" />
+    <Property Name="SVG_MODAL" Type="varchar(max)" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="INSTITUCION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="MODULO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="PACIENTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SEGUNDO_NOMBRE" Type="varchar" MaxLength="20" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="SEGUNDO_APELLIDO" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="FECHA_NACIMIENTO" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="FECHA_INGRESO" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="SEXO" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ID_PACIENTE" Type="bigint" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+    <Property Name="CEDULA" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PACIENTE_ASEGURADORA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PACIENTE" Type="bigint" Nullable="false" />
+    <Property Name="ID_ASEGURADORA" Type="bigint" Nullable="false" />
+    <Property Name="COBERTURA" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="CONSUMIDO" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="FECHA_INICIO" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="FECHA_FIN" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="PACIENTE_ENFERMEDAD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PACIENTE" Type="bigint" Nullable="false" />
+    <Property Name="ID_ENFERMEDAD" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PAGO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_RECIBO" Type="bigint" Nullable="false" />
+    <Property Name="MONTO" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FECHA" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="PAGO_TIPO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_PAGO" Type="bigint" Nullable="false" />
+    <Property Name="ID_TIPOPAGO" Type="bigint" Nullable="false" />
+    <Property Name="MONTO" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+    <Property Name="ID_BANCO" Type="bigint" />
+    <Property Name="TIPOCHECK" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="RECIBO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_CITA" Type="bigint" />
+    <Property Name="ID_ASEGURADORA" Type="bigint" />
+    <Property Name="FECHA" Type="datetime2" Precision="0" Nullable="false" />
+    <Property Name="MONTO" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ESTATUS" Type="varchar" MaxLength="50" />
+    <Property Name="FEHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="RELACION_TELEFONO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DOCTOR" Type="bigint" />
+    <Property Name="ID_PACIENTE" Type="bigint" />
+    <Property Name="ID_SECRETARIA" Type="bigint" />
+    <Property Name="ID_GERENTE" Type="bigint" />
+    <Property Name="ID_TELEFONO" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="ROL_MODULO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ROL" Type="bigint" Nullable="false" />
+    <Property Name="ID_MODULO" Type="bigint" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="SECRETARIA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ROL" Type="bigint" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="SEGUNDO_NOMBRE" Type="varchar" MaxLength="30" />
+    <Property Name="APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SEGUNDO_APELLIDO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LOGIN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="30" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TELEFONO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NUMERO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TIPOCHECK" Type="varchar(max)" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="TIPOPAGO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+  </EntityType>
+  <EntityType Name="TRATA_DIENTE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TRATAMIENTO" Type="bigint" Nullable="false" />
+    <Property Name="ID_DIENTE" Type="bigint" Nullable="false" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="7" />
+  </EntityType>
+  <EntityType Name="TRATAMIENTO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" />
+    <Property Name="ESTATUS" Type="bit" Nullable="false" />
+    <Property Name="FECHA_MODIFICACION" Type="datetime2" Precision="0" />
+    <Property Name="MONTO" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="COLOR" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="FK_ASEGURADORA">
+    <End Role="ASEGURADORA" Type="Self.ASEGURADORA" Multiplicity="1" />
+    <End Role="PACIENTE_ASEGURADORA" Type="Self.PACIENTE_ASEGURADORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ASEGURADORA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PACIENTE_ASEGURADORA">
+        <PropertyRef Name="ID_ASEGURADORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BANCO">
+    <End Role="BANCO" Type="Self.BANCO" Multiplicity="0..1" />
+    <End Role="PAGO_TIPO" Type="Self.PAGO_TIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANCO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PAGO_TIPO">
+        <PropertyRef Name="ID_BANCO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_DOCTOR">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+    <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_DOCTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+    <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRATO">
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="1" />
+    <End Role="DETALLE_CONTARTO" Type="Self.DETALLE_CONTARTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONTRATO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DETALLE_CONTARTO">
+        <PropertyRef Name="ID_CONTRATO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRATO_ASEGURADORA">
+    <End Role="ASEGURADORA" Type="Self.ASEGURADORA" Multiplicity="1" />
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ASEGURADORA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTRATO">
+        <PropertyRef Name="ID_ASEGURADORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRATO_DOCTOR">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="0..1" />
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTRATO">
+        <PropertyRef Name="ID_DOCTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRATO_INSTITUCION">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="0..1" />
+    <End Role="CONTRATO" Type="Self.CONTRATO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CONTRATO">
+        <PropertyRef Name="ID_INSTITUCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DETALLE_HISTORIAL_HISTORIAL">
+    <End Role="HISTORIAL" Type="Self.HISTORIAL" Multiplicity="1" />
+    <End Role="DETALLE_HISTORIAL" Type="Self.DETALLE_HISTORIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HISTORIAL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DETALLE_HISTORIAL">
+        <PropertyRef Name="ID_HISTORIAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DETALLE_HISTORIAL_TRATA_DIENTE">
+    <End Role="TRATA_DIENTE" Type="Self.TRATA_DIENTE" Multiplicity="1" />
+    <End Role="DETALLE_HISTORIAL" Type="Self.DETALLE_HISTORIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRATA_DIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DETALLE_HISTORIAL">
+        <PropertyRef Name="ID_TRATA_DIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DIENTE">
+    <End Role="DIENTE" Type="Self.DIENTE" Multiplicity="1" />
+    <End Role="TRATA_DIENTE" Type="Self.TRATA_DIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TRATA_DIENTE">
+        <PropertyRef Name="ID_DIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DIRECCION">
+    <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="0..1" />
+    <End Role="DIRECCION1" Type="Self.DIRECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DIRECCION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DIRECCION1">
+        <PropertyRef Name="ID_DIRECCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+    <End Role="DOCTOR_INTITUCION" Type="Self.DOCTOR_INTITUCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOCTOR_INTITUCION">
+        <PropertyRef Name="ID_DOCTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_DIRECCION">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="0..1" />
+    <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DIRECCION">
+        <PropertyRef Name="ID_DOCTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_DOCTOR">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+    <End Role="DOCTOR1" Type="Self.DOCTOR" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOCTOR1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOCTOR">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_SECRETARIA_DOCTOR">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="1" />
+    <End Role="DOCTOR_SECRETARIA" Type="Self.DOCTOR_SECRETARIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOCTOR_SECRETARIA">
+        <PropertyRef Name="ID_DOCTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DOCTOR_SECRETARIA_SECRETARIA">
+    <End Role="SECRETARIA" Type="Self.SECRETARIA" Multiplicity="1" />
+    <End Role="DOCTOR_SECRETARIA" Type="Self.DOCTOR_SECRETARIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECRETARIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOCTOR_SECRETARIA">
+        <PropertyRef Name="ID_SECRETARIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GERENTE_DIRECCION">
+    <End Role="GERENTE" Type="Self.GERENTE" Multiplicity="0..1" />
+    <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GERENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DIRECCION">
+        <PropertyRef Name="ID_GERENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GERENTE_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="GERENTE" Type="Self.GERENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GERENTE">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HISTORIAL_CITA">
+    <End Role="CITA" Type="Self.CITA" Multiplicity="0..1" />
+    <End Role="HISTORIAL" Type="Self.HISTORIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HISTORIAL">
+        <PropertyRef Name="ID_CITA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSTITUCION">
+    <End Role="INSTITUCION" Type="Self.INSTITUCION" Multiplicity="1" />
+    <End Role="DOCTOR_INTITUCION" Type="Self.DOCTOR_INTITUCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INSTITUCION">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DOCTOR_INTITUCION">
+        <PropertyRef Name="ID_INSTITUCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACIENFER_ENFERMEDAD">
+    <End Role="ENFERMEDAD" Type="Self.ENFERMEDAD" Multiplicity="1" />
+    <End Role="PACIENTE_ENFERMEDAD" Type="Self.PACIENTE_ENFERMEDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ENFERMEDAD">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PACIENTE_ENFERMEDAD">
+        <PropertyRef Name="ID_ENFERMEDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACIENFER_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+    <End Role="PACIENTE_ENFERMEDAD" Type="Self.PACIENTE_ENFERMEDAD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PACIENTE_ENFERMEDAD">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+    <End Role="PACIENTE_ASEGURADORA" Type="Self.PACIENTE_ASEGURADORA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PACIENTE_ASEGURADORA">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACIENTE_DIRECCION">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="0..1" />
+    <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DIRECCION">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACIENTE_HISTORIA">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="1" />
+    <End Role="HISTORIAL" Type="Self.HISTORIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HISTORIAL">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PACIENTE_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="0..1" />
+    <End Role="PACIENTE1" Type="Self.PACIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PACIENTE1">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGO_RECIBO">
+    <End Role="RECIBO" Type="Self.RECIBO" Multiplicity="1" />
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RECIBO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PAGO">
+        <PropertyRef Name="ID_RECIBO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGOTIPO_PAGO">
+    <End Role="PAGO" Type="Self.PAGO" Multiplicity="1" />
+    <End Role="PAGO_TIPO" Type="Self.PAGO_TIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAGO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PAGO_TIPO">
+        <PropertyRef Name="ID_PAGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PAGOTIPO_TIPOPAGO">
+    <End Role="TIPOPAGO" Type="Self.TIPOPAGO" Multiplicity="1" />
+    <End Role="PAGO_TIPO" Type="Self.PAGO_TIPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPOPAGO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PAGO_TIPO">
+        <PropertyRef Name="ID_TIPOPAGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECIBO_CITA">
+    <End Role="CITA" Type="Self.CITA" Multiplicity="0..1" />
+    <End Role="RECIBO" Type="Self.RECIBO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RECIBO">
+        <PropertyRef Name="ID_CITA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RECIBO_PACIENTE_ASEGURADORA">
+    <End Role="PACIENTE_ASEGURADORA" Type="Self.PACIENTE_ASEGURADORA" Multiplicity="0..1" />
+    <End Role="RECIBO" Type="Self.RECIBO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE_ASEGURADORA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RECIBO">
+        <PropertyRef Name="ID_ASEGURADORA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLMODULO_MODULO">
+    <End Role="MODULO" Type="Self.MODULO" Multiplicity="1" />
+    <End Role="ROL_MODULO" Type="Self.ROL_MODULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODULO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ROL_MODULO">
+        <PropertyRef Name="ID_MODULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ROLMODULO_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="ROL_MODULO" Type="Self.ROL_MODULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ROL_MODULO">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SECRETARIA_DIRECCION">
+    <End Role="SECRETARIA" Type="Self.SECRETARIA" Multiplicity="0..1" />
+    <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECRETARIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DIRECCION">
+        <PropertyRef Name="ID_SECRETARIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SECRETARIA_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="SECRETARIA" Type="Self.SECRETARIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SECRETARIA">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO">
+    <End Role="TELEFONO" Type="Self.TELEFONO" Multiplicity="1" />
+    <End Role="RELACION_TELEFONO" Type="Self.RELACION_TELEFONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TELEFONO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RELACION_TELEFONO">
+        <PropertyRef Name="ID_TELEFONO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO_DOCTOR">
+    <End Role="DOCTOR" Type="Self.DOCTOR" Multiplicity="0..1" />
+    <End Role="RELACION_TELEFONO" Type="Self.RELACION_TELEFONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCTOR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RELACION_TELEFONO">
+        <PropertyRef Name="ID_DOCTOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO_GERENTE">
+    <End Role="GERENTE" Type="Self.GERENTE" Multiplicity="0..1" />
+    <End Role="RELACION_TELEFONO" Type="Self.RELACION_TELEFONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GERENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RELACION_TELEFONO">
+        <PropertyRef Name="ID_GERENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO_PACIENTE">
+    <End Role="PACIENTE" Type="Self.PACIENTE" Multiplicity="0..1" />
+    <End Role="RELACION_TELEFONO" Type="Self.RELACION_TELEFONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PACIENTE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RELACION_TELEFONO">
+        <PropertyRef Name="ID_PACIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TELEFONO_SECRETARIA">
+    <End Role="SECRETARIA" Type="Self.SECRETARIA" Multiplicity="0..1" />
+    <End Role="RELACION_TELEFONO" Type="Self.RELACION_TELEFONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECRETARIA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RELACION_TELEFONO">
+        <PropertyRef Name="ID_SECRETARIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRATAMIENTO">
+    <End Role="TRATAMIENTO" Type="Self.TRATAMIENTO" Multiplicity="1" />
+    <End Role="TRATA_DIENTE" Type="Self.TRATA_DIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRATAMIENTO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TRATA_DIENTE">
+        <PropertyRef Name="ID_TRATAMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="ObtenerEnfermedad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="char" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="NEOODONTOModelStoreContainer">
+    <EntitySet Name="ASEGURADORA" EntityType="Self.ASEGURADORA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BANCO" EntityType="Self.BANCO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CITA" EntityType="Self.CITA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONTRATO" EntityType="Self.CONTRATO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DETALLE_CONTARTO" EntityType="Self.DETALLE_CONTARTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DETALLE_HISTORIAL" EntityType="Self.DETALLE_HISTORIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DIENTE" EntityType="Self.DIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCTOR" EntityType="Self.DOCTOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCTOR_INTITUCION" EntityType="Self.DOCTOR_INTITUCION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCTOR_SECRETARIA" EntityType="Self.DOCTOR_SECRETARIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ENFERMEDAD" EntityType="Self.ENFERMEDAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GERENTE" EntityType="Self.GERENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HISTORIAL" EntityType="Self.HISTORIAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="INSTITUCION" EntityType="Self.INSTITUCION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MODULO" EntityType="Self.MODULO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PACIENTE" EntityType="Self.PACIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PACIENTE_ASEGURADORA" EntityType="Self.PACIENTE_ASEGURADORA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PACIENTE_ENFERMEDAD" EntityType="Self.PACIENTE_ENFERMEDAD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAGO" EntityType="Self.PAGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAGO_TIPO" EntityType="Self.PAGO_TIPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RECIBO" EntityType="Self.RECIBO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RELACION_TELEFONO" EntityType="Self.RELACION_TELEFONO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ROL_MODULO" EntityType="Self.ROL_MODULO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SECRETARIA" EntityType="Self.SECRETARIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TELEFONO" EntityType="Self.TELEFONO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPOPAGO" EntityType="Self.TIPOPAGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRATA_DIENTE" EntityType="Self.TRATA_DIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRATAMIENTO" EntityType="Self.TRATAMIENTO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ASEGURADORA" Association="Self.FK_ASEGURADORA">
+      <End Role="ASEGURADORA" EntitySet="ASEGURADORA" />
+      <End Role="PACIENTE_ASEGURADORA" EntitySet="PACIENTE_ASEGURADORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BANCO" Association="Self.FK_BANCO">
+      <End Role="BANCO" EntitySet="BANCO" />
+      <End Role="PAGO_TIPO" EntitySet="PAGO_TIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_DOCTOR" Association="Self.FK_CITA_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_PACIENTE" Association="Self.FK_CITA_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRATO" Association="Self.FK_CONTRATO">
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+      <End Role="DETALLE_CONTARTO" EntitySet="DETALLE_CONTARTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRATO_ASEGURADORA" Association="Self.FK_CONTRATO_ASEGURADORA">
+      <End Role="ASEGURADORA" EntitySet="ASEGURADORA" />
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRATO_DOCTOR" Association="Self.FK_CONTRATO_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRATO_INSTITUCION" Association="Self.FK_CONTRATO_INSTITUCION">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="CONTRATO" EntitySet="CONTRATO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DETALLE_HISTORIAL_HISTORIAL" Association="Self.FK_DETALLE_HISTORIAL_HISTORIAL">
+      <End Role="HISTORIAL" EntitySet="HISTORIAL" />
+      <End Role="DETALLE_HISTORIAL" EntitySet="DETALLE_HISTORIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DETALLE_HISTORIAL_TRATA_DIENTE" Association="Self.FK_DETALLE_HISTORIAL_TRATA_DIENTE">
+      <End Role="TRATA_DIENTE" EntitySet="TRATA_DIENTE" />
+      <End Role="DETALLE_HISTORIAL" EntitySet="DETALLE_HISTORIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DIENTE" Association="Self.FK_DIENTE">
+      <End Role="DIENTE" EntitySet="DIENTE" />
+      <End Role="TRATA_DIENTE" EntitySet="TRATA_DIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DIRECCION" Association="Self.FK_DIRECCION">
+      <End Role="DIRECCION" EntitySet="DIRECCION" />
+      <End Role="DIRECCION1" EntitySet="DIRECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR" Association="Self.FK_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="DOCTOR_INTITUCION" EntitySet="DOCTOR_INTITUCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_DIRECCION" Association="Self.FK_DOCTOR_DIRECCION">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="DIRECCION" EntitySet="DIRECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_DOCTOR" Association="Self.FK_DOCTOR_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="DOCTOR1" EntitySet="DOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_ROL" Association="Self.FK_DOCTOR_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_SECRETARIA_DOCTOR" Association="Self.FK_DOCTOR_SECRETARIA_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="DOCTOR_SECRETARIA" EntitySet="DOCTOR_SECRETARIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DOCTOR_SECRETARIA_SECRETARIA" Association="Self.FK_DOCTOR_SECRETARIA_SECRETARIA">
+      <End Role="SECRETARIA" EntitySet="SECRETARIA" />
+      <End Role="DOCTOR_SECRETARIA" EntitySet="DOCTOR_SECRETARIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GERENTE_DIRECCION" Association="Self.FK_GERENTE_DIRECCION">
+      <End Role="GERENTE" EntitySet="GERENTE" />
+      <End Role="DIRECCION" EntitySet="DIRECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GERENTE_ROL" Association="Self.FK_GERENTE_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="GERENTE" EntitySet="GERENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HISTORIAL_CITA" Association="Self.FK_HISTORIAL_CITA">
+      <End Role="CITA" EntitySet="CITA" />
+      <End Role="HISTORIAL" EntitySet="HISTORIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSTITUCION" Association="Self.FK_INSTITUCION">
+      <End Role="INSTITUCION" EntitySet="INSTITUCION" />
+      <End Role="DOCTOR_INTITUCION" EntitySet="DOCTOR_INTITUCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACIENFER_ENFERMEDAD" Association="Self.FK_PACIENFER_ENFERMEDAD">
+      <End Role="ENFERMEDAD" EntitySet="ENFERMEDAD" />
+      <End Role="PACIENTE_ENFERMEDAD" EntitySet="PACIENTE_ENFERMEDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACIENFER_PACIENTE" Association="Self.FK_PACIENFER_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="PACIENTE_ENFERMEDAD" EntitySet="PACIENTE_ENFERMEDAD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACIENTE" Association="Self.FK_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="PACIENTE_ASEGURADORA" EntitySet="PACIENTE_ASEGURADORA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACIENTE_DIRECCION" Association="Self.FK_PACIENTE_DIRECCION">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="DIRECCION" EntitySet="DIRECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACIENTE_HISTORIA" Association="Self.FK_PACIENTE_HISTORIA">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="HISTORIAL" EntitySet="HISTORIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PACIENTE_PACIENTE" Association="Self.FK_PACIENTE_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="PACIENTE1" EntitySet="PACIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGO_RECIBO" Association="Self.FK_PAGO_RECIBO">
+      <End Role="RECIBO" EntitySet="RECIBO" />
+      <End Role="PAGO" EntitySet="PAGO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGOTIPO_PAGO" Association="Self.FK_PAGOTIPO_PAGO">
+      <End Role="PAGO" EntitySet="PAGO" />
+      <End Role="PAGO_TIPO" EntitySet="PAGO_TIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PAGOTIPO_TIPOPAGO" Association="Self.FK_PAGOTIPO_TIPOPAGO">
+      <End Role="TIPOPAGO" EntitySet="TIPOPAGO" />
+      <End Role="PAGO_TIPO" EntitySet="PAGO_TIPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECIBO_CITA" Association="Self.FK_RECIBO_CITA">
+      <End Role="CITA" EntitySet="CITA" />
+      <End Role="RECIBO" EntitySet="RECIBO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RECIBO_PACIENTE_ASEGURADORA" Association="Self.FK_RECIBO_PACIENTE_ASEGURADORA">
+      <End Role="PACIENTE_ASEGURADORA" EntitySet="PACIENTE_ASEGURADORA" />
+      <End Role="RECIBO" EntitySet="RECIBO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLMODULO_MODULO" Association="Self.FK_ROLMODULO_MODULO">
+      <End Role="MODULO" EntitySet="MODULO" />
+      <End Role="ROL_MODULO" EntitySet="ROL_MODULO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ROLMODULO_ROL" Association="Self.FK_ROLMODULO_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="ROL_MODULO" EntitySet="ROL_MODULO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SECRETARIA_DIRECCION" Association="Self.FK_SECRETARIA_DIRECCION">
+      <End Role="SECRETARIA" EntitySet="SECRETARIA" />
+      <End Role="DIRECCION" EntitySet="DIRECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SECRETARIA_ROL" Association="Self.FK_SECRETARIA_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="SECRETARIA" EntitySet="SECRETARIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO" Association="Self.FK_TELEFONO">
+      <End Role="TELEFONO" EntitySet="TELEFONO" />
+      <End Role="RELACION_TELEFONO" EntitySet="RELACION_TELEFONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO_DOCTOR" Association="Self.FK_TELEFONO_DOCTOR">
+      <End Role="DOCTOR" EntitySet="DOCTOR" />
+      <End Role="RELACION_TELEFONO" EntitySet="RELACION_TELEFONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO_GERENTE" Association="Self.FK_TELEFONO_GERENTE">
+      <End Role="GERENTE" EntitySet="GERENTE" />
+      <End Role="RELACION_TELEFONO" EntitySet="RELACION_TELEFONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO_PACIENTE" Association="Self.FK_TELEFONO_PACIENTE">
+      <End Role="PACIENTE" EntitySet="PACIENTE" />
+      <End Role="RELACION_TELEFONO" EntitySet="RELACION_TELEFONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TELEFONO_SECRETARIA" Association="Self.FK_TELEFONO_SECRETARIA">
+      <End Role="SECRETARIA" EntitySet="SECRETARIA" />
+      <End Role="RELACION_TELEFONO" EntitySet="RELACION_TELEFONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRATAMIENTO" Association="Self.FK_TRATAMIENTO">
+      <End Role="TRATAMIENTO" EntitySet="TRATAMIENTO" />
+      <End Role="TRATA_DIENTE" EntitySet="TRATA_DIENTE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

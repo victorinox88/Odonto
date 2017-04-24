@@ -1,0 +1,82 @@
+﻿@model IEnumerable<odonto.Models.CONTRATO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Contrato</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Contrato", "Create")
+</p>
+
+<table id="table-contrato" style="text-align:center;" class="table table-striped table-bordered datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="text-align: center;">
+                Doctor
+            </th>
+            <th style="text-align: center;">
+                Aseguradora
+            </th>
+            <th style="text-align: center;">
+                Estatus
+            </th>
+            <th style="text-align: center;">
+                Fecha Inicio
+            </th>
+            <th style="text-align: center;">
+                Fecha Fin
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th style="text-align: center;">
+                Doctor
+            </th>
+            <th style="text-align: center;">
+                Aseguradora
+            </th>
+            <th style="text-align: center;">
+                Estatus
+            </th>
+            <th style="text-align: center;">
+                Fecha Inicio
+            </th>
+            <th style="text-align: center;">
+                Fecha Fin
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOCTOR.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ASEGURADORA.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ESTATUS)
+                </td>
+                <td>
+                    @item.FECHA_INICIO.ToString("dd-MM-yyyy")
+                </td>
+                <td>
+                    @item.FECHA_FIN.ToString("dd-MM-yyyy")
+                </td>
+                <td style="width: 76px;">
+                    <a href="/CONTRATO/Edit/@item.ID" style="color:#190;"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="/CONTRATO/Details/@item.ID"><i class="glyphicon glyphicon-search"></i></a>
+                    <a href="/CONTRATO/Delete/@item.ID" style="color:#e11;"><i class="glyphicon glyphicon-remove"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

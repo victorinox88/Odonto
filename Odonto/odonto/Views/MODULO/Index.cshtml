@@ -1,0 +1,64 @@
+﻿@model IEnumerable<odonto.Models.MODULO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Modulo</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Modulo", "Create")
+</p>
+<table id="table-modulo" style="text-align:center;" class="table table-striped table-bordered datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="text-align: center;">
+                Nombre
+            </th>
+            <th style="text-align: center;">
+                Descripción
+            </th>
+            <th style="text-align: center;">
+                Estatus
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th style="text-align: center;">
+                Nombre
+            </th>
+            <th style="text-align: center;">
+                Descripción
+            </th>
+            <th style="text-align: center;">
+                Estatus
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                </td>
+                <td>
+                    @(string.IsNullOrEmpty(item.DESCRIPCION) ? "-":item.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ESTATUS)
+                </td>
+                <td style="width: 76px;">
+                    <a href="/MODULO/Edit/@item.ID" style="color:#190;"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="/MODULO/Details/@item.ID"><i class="glyphicon glyphicon-search"></i></a>
+                    <a href="/MODULO/Delete/@item.ID" style="color:#e11;"><i class="glyphicon glyphicon-remove"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

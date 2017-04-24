@@ -1,0 +1,43 @@
+﻿@model List<odonto.Models.DOCTOR>
+
+@if (Model != null && Model.Count != 0)
+{
+    <div class="col-md-6 col-md-offset-3">
+        <h1 style="text-align:center;margin-bottom: 40px;">Contratos por Aseguradora</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Nombre y Apellido</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (odonto.Models.DOCTOR pa in Model)
+            {
+                int cont = 0;
+                foreach (odonto.Models.CONTRATO co in pa.CONTRATOes)
+                {
+                    if (cont == 0)
+                    {
+                        <tr>
+                            <td>@pa.ID</td>
+                            <td>@pa.NOMBRE @pa.SEGUNDO_NOMBRE @pa.APELLIDO @pa.SEGUNDO_APELLIDO</td>
+                            <td>@co.FECHA_INICIO</td>
+                            <td>@co.FECHA_FIN</td>
+                        </tr>
+                    }
+                    cont = cont + 1;
+                }
+
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert-warning">No hay pacientes registrados en esa aseguradora.</div>
+}
+

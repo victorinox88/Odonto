@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div style="padding-right:15px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("NEODONTO", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (ViewBag.rol == "1")
+                    {
+                        <li>@Html.ActionLink("Paciente", "Index", "PACIENTE")</li>
+                        <li>@Html.ActionLink("Doctor", "Index", "DOCTOR")</li>
+                        <li>@Html.ActionLink("Contrato", "Index", "CONTRATO")</li>
+                        <li>@Html.ActionLink("Cita", "Index", "CITA")</li>
+                        <li>@Html.ActionLink("Enfermedad", "Index", "ENFERMEDAD")</li>
+                        <li>@Html.ActionLink("Tratamiento", "Index", "TRATAMIENTO")</li>
+                        <li>@Html.ActionLink("Aseguradora", "Index", "ASEGURADORA")</li>
+                        <li>@Html.ActionLink("Pago", "Index", "Pago")</li>
+                        <li>@Html.ActionLink("Reporte", "Index", "Reporte")</li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administración<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Modulo", "Index", "MODULO")</li>
+                                <li>@Html.ActionLink("Rol", "Index", "ROL")</li>
+                                <li>@Html.ActionLink("Usuario", "Index", "USUARIO")</li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Paciente", "Index", "PACIENTE")</li>
+                        <li>@Html.ActionLink("Cita", "Index", "CITA")</li>
+                        <li>@Html.ActionLink("Aseguradora", "Index", "ASEGURADORA")</li>
+                        <li>@Html.ActionLink("Pago", "Index", "Pago")</li>
+                        <li>@Html.ActionLink("Reporte", "Index", "Reporte")</li>
+                    }
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@(ViewBag.rol == "1"? "Dr. " : "")@ViewBag.nombre @ViewBag.apellido<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Cerrar Session", "CloseSession", "Home")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datatable")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

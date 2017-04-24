@@ -1,0 +1,38 @@
+﻿@model odonto.Models.PACIENTE
+
+@if (Model != null)
+{
+    <div class="col-md-6 col-md-offset-3">
+        <h1 style="text-align:center;margin-bottom: 40px;">Tratamientos por Paciente</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tratamiento</th>
+                <th>Diente</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (odonto.Models.CITA ci in Model.CITAs)
+            {
+                foreach (odonto.Models.HISTORIAL hi in ci.HISTORIALs)
+                {
+                    foreach (odonto.Models.DETALLE_HISTORIAL de in hi.DETALLE_HISTORIAL)
+                    {
+                        <tr>
+                            <td>@de.TRATA_DIENTE.TRATAMIENTO.NOMBRE</td>
+                            <td>@de.TRATA_DIENTE.DIENTE.NOMBRE</td>
+                            <td>@ci.FECHA</td>
+                        </tr>
+                    }
+                }
+
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert-warning">No hay pacientes registrados para ese tratamiento.</div>
+}

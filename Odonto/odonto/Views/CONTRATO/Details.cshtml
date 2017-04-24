@@ -1,0 +1,75 @@
+﻿@model odonto.Models.CONTRATO
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CONTRATO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_INICIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_INICIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_FIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_FIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTATUS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_MODIFICACION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA_MODIFICACION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASEGURADORA.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASEGURADORA.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOCTOR.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOCTOR.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.INSTITUCION.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.INSTITUCION.NOMBRE)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<odonto.Models.ASEGURADORA>
+
+@{
+    ViewBag.Title = "Aseguradora";
+}
+
+<h2>Aseguradora</h2>
+
+<p>
+    @Html.ActionLink("Nueva Aseguradora", "Create")
+</p>
+<table id="table-aseguradora" style="text-align:center;" class="table table-striped table-bordered datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Estatus
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Estatus
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DESCRIPCION)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ESTATUS)
+                </td>
+                <td>
+                    <a href="/ASEGURADORA/Edit/@item.ID" style="color:#190;"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="/ASEGURADORA/Details/@item.ID"><i class="glyphicon glyphicon-search"></i></a>
+                    <a href="/ASEGURADORA/Delete/@item.ID" style="color:#e11;"><i class="glyphicon glyphicon-remove"></i></a>
+</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,225 @@
+﻿@model odonto.Models.PacienteViewModel
+
+@if (Model != null && Model.hist == null)
+{
+    using (Html.BeginForm("Create", "PACIENTE", null, FormMethod.Post, new { @class = "well", @style = "margin-top: 40px;" }))
+    {
+        <fieldset>
+            <legend>Detalle de la consulta</legend>
+            <div class="col-md-4 col-md-offset-4">
+                <input type="hidden" id="update" value="false" />
+                <img src="~/images/dientes_adultos2.png" />
+                <!--DIENTE superiores-->
+                <svg class="centralderecho diente" data-nombre="Incisivo  Central Superior Derecho" style="position: absolute; width: 42px; height: 71px; margin-top: 0px; margin-left: -128px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 241.3 263.7" enable-background="new 0 0 241.3 263.7" xml:space="preserve">
+                <path style="display:none;" data-position="1" transform="rotate(16 300 0)" d="M90.8,100.3H36.2c1.9,6.7,4.2,13.2,6.3,18.8c6.8,16.2,15,30.2,23.6,44.2h24.7V100.3z" />
+                <path style="display:none;" data-position="2" transform="rotate(16 300 0)" d="M207.9,100.3h-57.3v63h33.3c7-14.8,12.8-30.2,19.4-49.2C205.2,109.6,206.7,105,207.9,100.3z" />
+                <path style="display:none;" data-position="3" transform="rotate(16 300 0)" d="M150.5,100.3V38.2c-20,0.7-39.7,1.3-59.7-0.1v62.2H150.5z" />
+                <path style="display:none;" data-position="4" transform="rotate(16 300 0)" d="M90.8,163.4v38.1c9.6,11.9,21.5,22.1,36.3,24.7c8.4,1.4,16.4-3.2,23.4-10.1v-52.6H90.8z" />
+                <rect style="display:none;" data-position="5" transform="rotate(16 300 0)" x="90.8" y="100.3" width="59.7" height="63" />
+                <path style="display:none;" data-position="6" transform="rotate(16 300 0)" d="M207.9,100.3c3.7-15.2,2.8-30-0.8-41.3c-8.3-18-23.1-21.9-42.1-21.3c-4.8,0.2-9.6,0.3-14.4,0.5v62.2H207.9z" />
+                <path style="display:none;" data-position="7" transform="rotate(16 300 0)" d="M150.5,216c9.5-9.3,17.2-22.7,21.7-30.5c4.3-7.5,8.1-14.7,11.6-22.1h-33.3V216z" />
+                <path style="display:none;" data-position="8" transform="rotate(16 300 0)" d="M90.8,38.1c-2-0.1-4-0.3-6-0.5c-17-1.5-42.9,1.7-51.2,18.8c-4.9,10.1-2.1,27.6,2.5,43.9h54.6V38.1z" />
+                <path style="display:none;" data-position="9" transform="rotate(16 300 0)" d="M66.1,163.4c3.9,6.4,7.9,12.7,11.9,19.3c3.7,6.2,8,12.7,12.9,18.7v-38.1H66.1z" />
+            </svg>
+                <svg class="centralizquierdo diente" data-nombre="Incisivo  Central Superior Izquierdo" style="position: absolute; width: 42px; height: 71px; margin-top: -8px; margin-left: -167px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="6" d="M381.704,315.981h138.48c-4.819,16.993-10.652,33.479-15.979,47.682c-17.247,41.087-38.044,76.595-59.856,112.103h-62.646V315.981z" />
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="4" d="M84.708,315.981h145.328v159.785h-84.458c-17.753-37.537-32.464-76.596-49.203-124.784C91.555,339.568,87.751,327.901,84.708,315.981z" />
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="2" d="M230.29,315.981V158.479c50.725,1.775,100.69,3.297,151.415-0.253v157.755H230.29z" />
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="8" d="M381.704,476.02v96.631c-24.348,30.182-54.529,56.052-92.067,62.646c-21.304,3.551-41.594-8.115-59.348-25.616V476.272h151.415V476.02z" />
+                <rect style="display:none;" transform="rotate(-16 300 0)" data-position="5" x="230.29" y="315.981" width="151.415" height="159.785" />
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="1" d="M84.708,315.981c-9.384-38.551-7.102-76.088,2.029-104.748c21.051-45.653,58.588-55.544,106.776-54.022c12.174,0.507,24.349,0.761,36.522,1.268v157.755H84.708V315.981z" />
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="7" d="M230.29,609.427c-24.095-23.588-43.624-57.573-55.037-77.356c-10.906-19.021-20.544-37.283-29.421-56.051h84.458V609.427z" />
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="3" d="M381.704,158.226c5.072-0.254,10.146-0.761,15.218-1.268c43.116-3.805,108.806,4.312,129.856,47.682c12.428,25.616,5.326,70-6.341,111.342H381.958V158.226H381.704z" />
+                <path style="display:none;" transform="rotate(-16 300 0)" data-position="9" d="M444.35,476.02c-9.891,16.231-20.036,32.21-30.182,48.949c-9.384,15.725-20.29,32.211-32.718,47.428v-96.631h62.899V476.02z" />
+            </svg>
+                <svg class="colmilloderecho diente" data-nombre="Canino Superior Derecho" style="position: absolute;width: 70px;height: 71px;margin-top: 10px;margin-left: -110px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 379 417" enable-background="new 0 0 379 417" xml:space="preserve">
+                <path style="display:none;" data-position="2" transform="rotate(45 180 250)" d="M213.7,178.8v-49.1c-16.7-6.5-32.1-11.3-48.5-10.1v59.2H213.7z" />
+                <path style="display:none;" data-position="8" transform="rotate(45 180 250)" d="M165.3,238.2v41.6c11.1,15.3,25.3,23.6,43.3,13.2c1.7-1,3.5-2.3,5.2-3.9v-50.9H165.3z" />
+                <path style="display:none;" data-position="4" transform="rotate(45 180 250)" d="M165.3,178.8h-45.6c4.7,16.6,14.3,34.1,22,49.7c1,3.1,2.2,6.4,3.4,9.7h20.3V178.8z" />
+                <path style="display:none;" data-position="6" transform="rotate(45 180 250)" d="M213.7,178.8v59.4h29.9c7.2-18.2,15.3-42,17.8-59.4H213.7z" />
+                <path style="display:none;" data-position="3" transform="rotate(45 180 250)" d="M261.4,178.8c0.8-5.9,1-11,0.3-14.9c-3.9-22.1-27.3-26-45.5-33.2c-0.9-0.3-1.7-0.7-2.5-1v49.1H261.4z" />
+                <path style="display:none;" data-position="9" transform="rotate(45 180 250)" d="M213.7,289.1c7.1-6.4,13.8-16.7,18.2-25.1c1.9-2.8,6.6-12.9,11.8-25.8h-29.9V289.1z" />
+                <path style="display:none;" data-position="7" transform="rotate(45 180 250)" d="M145,238.2c5.2,14.5,11.9,30,20.3,41.6v-41.6H145z" />
+                <rect style="display:none;" data-position="5" transform="rotate(45 180 250)" x="165.3" y="178.8" width="48.5" height="59.4" />
+                <path style="display:none;" data-position="1" transform="rotate(45 180 250)" d="M165.3,119.6c-6.4,0.5-13,1.9-19.9,4.5c-29.4,11.3-32.2,32-25.8,54.7h45.6V119.6z" />
+            </svg>
+                <svg class="colmilloizquierdo diente" data-nombre="Canino Superior Izquierdo" style="position: absolute;width: 74px;height: 77px;margin-top: 24px;margin-left: -224px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                <path style="display:none;" data-position="2" transform="rotate(-45 180 250)" d="M266.756,348.041v-79.285c26.966-10.496,51.833-18.247,78.316-16.31v95.595H266.756z" />
+                <path style="display:none;" data-position="8" transform="rotate(-45 180 250)" d="M344.911,443.959v67.175c-17.925,24.706-40.854,38.108-69.919,21.314c-2.745-1.614-5.652-3.714-8.397-6.297v-82.192H344.911L344.911,443.959z" />
+                <path style="display:none;" data-position="6" transform="rotate(-45 180 250)" d="M344.911,348.041h73.634c-7.59,26.805-23.092,55.064-35.525,80.255c-1.615,5.006-3.553,10.334-5.49,15.663h-32.78v-95.918H344.911z" />
+                <path style="display:none;" data-position="4" transform="rotate(-45 180 250)" d="M266.756,348.041v95.918h-48.282c-11.626-29.389-24.706-67.821-28.743-95.918H266.756z" />
+                <path style="display:none;" data-position="1" transform="rotate(-45 180 250)" d="M189.731,348.041c-1.292-9.527-1.614-17.762-0.484-24.06c6.298-35.687,44.083-41.984,73.473-53.61c1.453-0.485,2.745-1.13,4.037-1.615v79.285H189.731z" />
+                <path style="display:none;" data-position="7" transform="rotate(-45 180 250)" d="M266.756,526.151c-11.466-10.335-22.284-26.967-29.39-40.531c-3.067-4.521-10.657-20.831-19.054-41.661h48.281v82.192H266.756z" />
+                <path style="display:none;" data-position="9" transform="rotate(-45 180 250)" d="M377.69,443.959c-8.396,23.414-19.216,48.443-32.779,67.175v-67.175H377.69L377.69,443.959z" />
+                <rect style="display:none;" data-position="5" transform="rotate(-45 180 250)" x="266.594" y="348.041" width="78.317" height="95.918" />
+                <path style="display:none;" data-position="3" transform="rotate(-45 180 250)" d="M344.911,252.446c10.334,0.808,20.992,3.068,32.134,7.267c47.475,18.247,51.996,51.673,41.661,88.328h-73.634v-95.595H344.911z" />
+            </svg>
+                <svg class="incisivolateralderecho diente" data-nombre="Incisivo  Lateral Superior Derecho" style="position: absolute; width: 39px; height: 68px; margin-top: 0px; margin-left: -108px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 247 270" enable-background="new 0 0 247 270" xml:space="preserve">
+                <path style="display:none;" data-position="6" transform="rotate(25 90 150)" d="M199.7,102.6h-49.5v62.8h24.6c2.4-5.5,4.7-11,7-16.6C187.3,135.3,195.6,118.9,199.7,102.6z" />
+                <path style="display:none;" data-position="2" transform="rotate(25 90 150)" d="M150.1,102.6V40.7c-17.6-1.2-35.8-1.5-53.6,0.2v61.7H150.1z" />
+                <path style="display:none;" data-position="8" transform="rotate(25 90 150)" d="M96.6,165.4v35.6c0,0.1,0.1,0.1,0.1,0.2c8.9,17.9,26.2,36.1,46.4,22c2.7-1.9,5-4.3,7-7v-50.7H96.6z" />
+                <path style="display:none;" data-position="4" transform="rotate(25 90 150)" d="M96.6,102.6H49.1c4,12.2,10,24.8,16.2,36.1c2.9,5.4,8.2,15.8,13.6,26.6h17.7V102.6z" />
+                <path style="display:none;" data-position="3" transform="rotate(25 90 150)" d="M199.7,102.6c2.4-9.5,3.4-19,1.7-27.9c-4.2-21.3-18.2-31.1-39.1-33c-4-0.4-8-0.7-12.1-1v61.9H199.7z" />
+                <rect style="display:none;" data-position="5" transform="rotate(25 90 150)" x="96.6" y="102.6" width="53.6" height="62.8" />
+                <path style="display:none;" data-position="9" transform="rotate(25 90 150)" d="M150.1,216.1c5.5-7.4,9.1-17.2,12.8-24.8c4.1-8.6,8-17.2,11.8-25.9h-24.6V216.1z" />
+                <path style="display:none;" data-position="1" transform="rotate(25 90 150)" d="M96.6,40.9c-7.4,0.7-14.7,1.7-21.8,3.2c-33.1,6.7-34.4,31.7-25.7,58.5h47.5V40.9z" />
+                <path style="display:none;" data-position="7" transform="rotate(25 90 150)" d="M78.9,165.4c7.3,14.5,14.9,30,17.7,35.6v-35.6H78.9z" />
+            </svg>
+                <svg class="incisivolateralizquierdo diente" data-nombre="Incisivo  Lateral Superior Izquierdo" style="position: absolute; width: 39px; height: 68px; margin-top: 9px; margin-left: -187px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                <path style="display:none;" data-position="4" transform="rotate(-25 90 150)" d="M116.659,315.722h122.648v155.602h-60.952c-5.947-13.628-11.646-27.255-17.345-41.131C147.383,396.743,126.818,356.108,116.659,315.722z" />
+                <path style="display:none;" data-position="2" transform="rotate(-25 90 150)" d="M239.554,315.722V162.35c43.608-2.973,88.704-3.716,132.807,0.496v152.876H239.554z" />
+                <path style="display:none;" data-position="8" transform="rotate(-25 90 150)" d="M372.113,471.323v88.207c0,0.248-0.248,0.248-0.248,0.496c-22.051,44.351-64.916,89.445-114.966,54.51c-6.69-4.708-12.389-10.654-17.345-17.344V471.571h132.559V471.323z" />
+                <path style="display:none;" data-position="6" transform="rotate(-25 90 150)" d="M372.113,315.722h117.692c-9.911,30.228-24.777,61.448-40.14,89.446c-7.186,13.38-20.316,39.147-33.697,65.907h-43.855V315.722L372.113,315.722z" />
+                <path style="display:none;" data-position="1" transform="rotate(-25 90 150)" d="M116.659,315.722c-5.946-23.539-8.424-47.077-4.212-69.129c10.406-52.776,45.095-77.058,96.88-81.765c9.911-0.991,19.821-1.734,29.98-2.478v153.372H116.659z" />
+                <rect style="display:none;" data-position="5" transform="rotate(-25 90 150)" x="239.307" y="315.722" width="132.806" height="155.602" />
+                <path style="display:none;" data-position="7" transform="rotate(-25 90 150)" d="M239.554,596.944c-13.627-18.335-22.547-42.617-31.715-61.448c-10.158-21.309-19.821-42.616-29.237-64.173h60.952V596.944z" />
+                <path style="display:none;" data-position="3" transform="rotate(-25 90 150)" d="M372.113,162.845c18.336,1.734,36.423,4.212,54.015,7.929c82.013,16.601,85.233,78.544,63.678,144.948H372.113V162.845L372.113,162.845z" />
+                <path style="display:none;" data-position="9" transform="rotate(-25 90 150)" d="M415.969,471.323c-18.087,35.927-36.918,74.332-43.855,88.207v-88.207H415.969z" />
+            </svg>
+                <svg class="primermolarderecho diente" data-nombre="Primer Molar Superior Derecho" style="position: absolute;width: 46px;height: 51px;margin-top: 93px;margin-left: -60px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 245 268" enable-background="new 0 0 245 268" xml:space="preserve">
+                <path style="display:none;" data-position="3" transform="rotate(-20 110 100)" d="M206.7,102.6c-1.1-14.4-4.3-28.4-10.6-41.9c-7.6-16.1-25.5-18.4-42.2-18.9v60.7H206.7z" />
+                <path style="display:none;" data-position="1" transform="rotate(-20 110 100)" d="M66.7,48.7c-19.1,12.9-22.2,28.3-27.4,53.8c0,0,0,0.1,0,0.1h51.8V40.5C82.3,41.5,74,43.8,66.7,48.7z" />
+                <rect style="display:none;" data-position="5" transform="rotate(-20 110 100)" x="91.1" y="102.6" width="62.8" height="62.8" />
+                <path style="display:none;" data-position="2" transform="rotate(-20 110 100)" d="M91.1,102.6h62.8V41.9c-5.3-0.1-10.5-0.1-15.2-0.2c-10.2-0.3-21.5-1.6-32.7-1.8h-5.2c-3.3,0.1-6.6,0.2-9.8,0.6V102.6z" />
+                <path style="display:none;" data-position="8" transform="rotate(-20 110 100)" d="M153.9,227.3v-61.9H91.1v54.2c7.3,1.6,14.9,2.6,22.4,3.7c9.9,1.5,20.1,4.6,30.2,4.8h2.2c2,0,4-0.2,6-0.5C152.6,227.5,153.2,227.4,153.9,227.3z" />
+                <path style="display:none;" data-position="6" transform="rotate(-20 110 100)" d="M206.7,102.6h-52.8v62.8h49.4c1.5-9.5,2.2-19.2,3-28.6C207.3,125.3,207.6,113.9,206.7,102.6z" />
+                <path style="display:none;" data-position="9" transform="rotate(-20 110 100)" d="M153.9,227.3c11.2-2.2,20.5-7.3,28.6-15.5c12.8-12.9,18.1-29.3,20.8-46.4h-49.4V227.3z" />
+                <path style="display:none;" data-position="7" transform="rotate(-20 110 100)" d="M91.1,219.6v-54.2H44.4c2.7,8.6,6.1,17.1,10,26.9C61.3,209.6,75.3,216.1,91.1,219.6z" />
+                <path style="display:none;" data-position="4" transform="rotate(-20 110 100)" d="M91.1,102.6H39.4c-0.5,2.6-1.5,12.4-1.5,13.7c-0.5,20.5,2.1,34.8,6.5,49h46.7V102.6z" />
+            </svg>
+                <svg class="primermolarizquierdo diente" data-nombre="Primer Molar Superior Izquierdo" style="position: absolute;width: 52px;height: 60px;margin-top: 85px;margin-left: -232px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                <path style="display:none;" data-position="1" transform="rotate(20 110 100)" d="M95.859,317.564c2.748-35.971,10.741-70.942,26.479-104.665c18.984-40.217,63.698-45.962,105.414-47.211v151.626H95.859V317.564z" />
+                <path style="display:none;" data-position="3" transform="rotate(20 110 100)" d="M445.574,182.924c47.711,32.224,55.454,70.692,68.443,134.391v0.25H384.624V162.441C406.605,164.938,427.339,170.684,445.574,182.924z" />
+                <rect style="display:none;" data-position="5" transform="rotate(20 110 100)" x="227.752" y="317.564" width="156.872" height="156.872" />
+                <path style="display:none;" data-position="2" transform="rotate(20 110 100)" d="M384.624,317.564H227.752V165.938c13.239-0.25,26.229-0.25,37.969-0.5c25.479-0.75,53.706-3.997,81.684-4.497h12.989c8.243,0.25,16.486,0.5,24.479,1.499v155.123H384.624z" />
+                <path style="display:none;" data-position="8" transform="rotate(20 110 100)" d="M227.752,629.06V474.436h156.872v135.39c-18.235,3.997-37.22,6.495-55.955,9.242c-24.729,3.747-50.209,11.491-75.438,11.99h-5.495c-4.996,0-9.992-0.499-14.988-1.249C230.999,629.56,229.5,629.31,227.752,629.06z" />
+                <path style="display:none;" data-position="4" transform="rotate(20 110 100)" d="M95.859,317.564h131.893v156.872H104.353c-3.747-23.73-5.495-47.961-7.494-71.441C94.36,374.268,93.611,345.791,95.859,317.564z" />
+                <path style="display:none;" data-position="7" transform="rotate(20 110 100)" d="M227.752,629.06c-27.978-5.495-51.209-18.235-71.442-38.719c-31.974-32.224-45.213-73.189-51.957-115.905h123.399V629.06z" />
+                <path style="display:none;" data-position="9" transform="rotate(20 110 100)" d="M384.624,609.825v-135.39h116.654c-6.744,21.482-15.237,42.716-24.979,67.195C459.063,584.846,424.092,601.082,384.624,609.825z" />
+                <path style="display:none;" data-position="6" transform="rotate(20 110 100)" d="M384.624,317.564h129.145c1.249,6.495,3.746,30.975,3.746,34.222c1.249,51.208-5.245,86.929-16.236,122.4H384.624V317.564L384.624,317.564z" />
+            </svg>
+                <svg class="segundomolarderecho diente" data-nombre="Segundo Molar Superior Derecho" style="position: absolute;width: 46px;height: 70px;margin-top: 118px;margin-left: -54px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 251.4 250.9" enable-background="new 0 0 251.4 250.9" xml:space="preserve">
+                <path style="display:none;" data-position="8" transform="rotate(-8 60 60)" d="M156.6,156.4H94.7v57.8c2.1,0.2,4.2,0.5,6.2,0.8c18.3,2.4,37.6,3.8,56.6,3.3h-0.9V156.4z" />
+                <path style="display:none;" data-position="2" transform="rotate(-8 60 60)" d="M156.6,94.5V34c-19.5-1.2-42.3-3.2-61.9,1.9v58.6H156.6z" />
+                <path style="display:none;" data-position="4" transform="rotate(-8 60 60)" d="M94.7,94.5H45.2c-4.7,20-5.8,37.1-5.9,45.6c-0.1,5.1-0.2,10.7,0.1,16.3h55.4V94.5z" />
+                <path style="display:none;" data-position="6" transform="rotate(-8 60 60)" d="M212,94.5h-55.4v61.9h54.4c0-0.6-0.1-1.2-0.1-1.7c-0.6-14.7-1.2-29.3-0.1-44.1C211.2,105.2,211.7,99.8,212,94.5z" />
+                <path style="display:none;" data-position="3" transform="rotate(-8 60 60)" d="M212,94.5c0.4-8.5,0.3-17-1.7-25.6c-5.8-25.3-28.4-33.4-52-34.9c-0.6,0-1.1-0.1-1.7-0.1v60.5H212z" />
+                <rect style="display:none;" data-position="5" transform="rotate(-8 60 60)" x="94.7" y="94.5" width="61.9" height="61.9" />
+                <path style="display:none;" data-position="1" transform="rotate(-8 60 60)" d="M94.7,35.9c-4.5,1.2-8.8,2.7-12.8,4.8c-15.6,7.8-27.1,21.6-32.3,37.8c-1.7,5.5-3.2,10.8-4.4,16h49.6V35.9z" />
+                <path style="display:none;" data-position="7" transform="rotate(-8 60 60)" d="M39.3,156.4c0.3,8.1,1.3,16.3,4.1,23.1c4.1,10,11.7,17.6,19.8,24.6c8.4,7.2,20.4,8.8,31.5,10.1v-57.8H39.3z" />
+                <path style="display:none;" data-position="9" transform="rotate(-8 60 60)" d="M156.6,218.3h0.9c10.5-0.3,21-1.1,31.1-2.7c27.7-4.3,23.4-38.2,22.4-59.2h-54.4V218.3z" />
+            </svg>
+                <svg class="segundomolarizquierdo diente" data-nombre="Segundo Molar Superior Izquierdo" style="position: absolute;width: 46px;height: 70px;margin-top: 115px;margin-left: -240px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                <path style="display:none;" data-position="8" transform="rotate(8 60 60)" d="M230.749,471.344h150.687V612.05c-5.112,0.487-10.225,1.218-15.094,1.948c-44.549,5.842-91.532,9.25-137.785,8.033h2.191V471.344z" />
+                <path style="display:none;" data-position="2" transform="rotate(8 60 60)" d="M230.749,320.656V173.377c47.47-2.921,102.973-7.79,150.687,4.625v142.654H230.749z" />
+                <path style="display:none;" data-position="6" transform="rotate(8 60 60)" d="M381.436,320.656h120.501c11.441,48.688,14.119,90.315,14.363,111.007c0.243,12.416,0.486,26.048-0.244,39.681H381.192V320.656H381.436z" />
+                <path style="display:none;" data-position="4" transform="rotate(8 60 60)" d="M95.884,320.656h134.864v150.688H98.319c0-1.461,0.243-2.921,0.243-4.139c1.461-35.785,2.921-71.327,0.243-107.355C97.832,346.704,96.615,333.559,95.884,320.656z" />
+                <path style="display:none;" data-position="1" transform="rotate(8 60 60)" d="M95.884,320.656c-0.974-20.692-0.73-41.384,4.139-62.32c14.119-61.589,69.136-81.308,126.587-84.959c1.461,0,2.678-0.243,4.139-0.243v147.279H95.884V320.656z" />
+                <rect style="display:none;" data-position="5" transform="rotate(8 60 60)" x="230.749" y="320.656" width="150.687" height="150.688" />
+                <path style="display:none;" data-position="3" transform="rotate(8 60 60)" d="M381.436,178.002c10.954,2.921,21.422,6.573,31.16,11.685c37.976,18.988,65.971,52.582,78.63,92.019c4.139,13.389,7.79,26.291,10.711,38.95H381.192V178.002H381.436z" />
+                <path style="display:none;" data-position="9" transform="rotate(8 60 60)" d="M516.3,471.344c-0.73,19.719-3.165,39.68-9.981,56.233c-9.98,24.344-28.482,42.846-48.2,59.886c-20.449,17.527-49.661,21.423-76.683,24.587V471.344H516.3L516.3,471.344z" />
+                <path style="display:none;" data-position="7" transform="rotate(8 60 60)" d="M230.749,622.031h-2.191c-25.561-0.73-51.121-2.678-75.709-6.573c-67.432-10.468-56.964-92.992-54.529-144.114h132.43V622.031z" />
+            </svg>
+                <svg class="primerpremolarderecho diente" data-nombre="Primer Premoral Superior Derecho" style="position: absolute;width: 35px;height: 38px;margin-top: 50px;margin-left: -75px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 243.7 248.3" enable-background="new 0 0 243.7 248.3" xml:space="preserve">
+                <path style="display:none;" data-position="4" transform="rotate(-8 60 60)" d="M91.1,93.6H41.7c-7.1,14.8-12,30.6-9.5,46.9c0.7,4.6,1.7,9.4,2.9,14h55.9V93.6z" />
+                <path style="display:none;" data-position="6" transform="rotate(-8 60 60)" d="M152,154.5h54.4c5.3-15.8,6.4-32.8,3.6-49c-0.7-4-1.5-7.9-2.5-11.9H152V154.5z" />
+                <path style="display:none;" data-position="2" transform="rotate(-8 60 60)" d="M152,93.6V33.8c-17.3-2.5-36.4-0.5-50.9,3.3c-3.1,0.8-6.5,1.6-10,2.6v53.9H152z" />
+                <path style="display:none;" data-position="8" transform="rotate(-8 60 60)" d="M91.1,154.5v57.8c5.8,0.1,11.7-0.3,18.8,0.4c9.4,0.9,18,3.9,27.3,2.4c5.1-0.8,10-2.1,14.8-3.9v-56.7H91.1z" />
+                <path style="display:none;" data-position="3" transform="rotate(-8 60 60)" d="M176.4,41.7c-7.1-4.1-15.5-6.6-24.5-7.9v59.8h55.6C202.2,71.8,192.3,50.8,176.4,41.7z" />
+                <rect style="display:none;" data-position="5" transform="rotate(-8 60 60)" x="91.1" y="93.6" width="60.9" height="60.9" />
+                <path style="display:none;" data-position="1" transform="rotate(-8 60 60)" d="M91.1,39.7c-11.2,3.2-23.9,9.1-35.5,28.8c-4.7,8-9.7,16.4-13.9,25.1h49.4V39.7z" />
+                <path style="display:none;" data-position="7" transform="rotate(-8 60 60)" d="M35.2,154.5c5.7,21.8,17.2,43.1,36.8,53.2c6.9,3.6,12.8,4.4,19.1,4.5v-57.8H35.2z" />
+                <path style="display:none;" data-position="9" transform="rotate(-8 60 60)" d="M152,211.2c15.9-5.8,29.8-16.3,40.3-29.9c6.3-8.1,11-17.2,14.2-26.8H152V211.2z" />
+            </svg>
+                <svg class="primerpremolarizquierdo diente" data-nombre="Primer Premoral Superior Izquierdo" style="position: absolute;width: 35px;height: 43px;margin-top: 44px;margin-left: -209px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                <path style="display:none;" data-position="6" transform="rotate(8 60 60)" d="M381.547,319.28h124.058c17.83,37.167,30.136,76.846,23.857,117.779c-1.758,11.552-4.27,23.605-7.283,35.158H381.798V319.28H381.547z" />
+                <path style="display:none;" data-position="4" transform="rotate(8 60 60)" d="M228.61,472.218H91.996c-13.31-39.679-16.072-82.371-9.041-123.053c1.759-10.045,3.768-19.839,6.278-29.884H228.61V472.218z" />
+                <path style="display:none;" data-position="2" transform="rotate(8 60 60)" d="M228.61,319.28V169.105c43.445-6.278,91.411-1.256,127.825,8.287c7.784,2.009,16.323,4.018,25.112,6.529V319.28H228.61z" />
+                <path style="display:none;" data-position="8" transform="rotate(8 60 60)" d="M381.547,472.218V617.37c-14.565,0.251-29.382-0.754-47.212,1.004c-23.606,2.261-45.204,9.794-68.558,6.027c-12.808-2.009-25.113-5.273-37.167-9.794v-142.39H381.547z" />
+                <path style="display:none;" data-position="1" transform="rotate(8 60 60)" d="M167.334,188.944c17.83-10.296,38.925-16.574,61.526-19.839V319.28H89.233C102.543,264.534,127.405,211.797,167.334,188.944z" />
+                <rect style="display:none;" data-position="5" transform="rotate(8 60 60)" x="228.61" y="319.28" width="152.937" height="152.938" />
+                <path style="display:none;" data-position="3" transform="rotate(8 60 60)" d="M381.547,183.922c28.126,8.036,60.02,22.853,89.15,72.325c11.804,20.09,24.359,41.185,34.907,63.033H381.547V183.922z" />
+                <path style="display:none;" data-position="9" transform="rotate(8 60 60)" d="M521.928,472.218c-14.314,54.746-43.194,108.236-92.415,133.6c-17.328,9.041-32.145,11.05-47.966,11.301V471.966h140.381V472.218z" />
+                <path style="display:none;" data-position="7" transform="rotate(8 60 60)" d="M228.61,614.607c-39.93-14.565-74.837-40.935-101.205-75.088c-15.821-20.341-27.624-43.193-35.66-67.302H228.61V614.607z" />
+            </svg>
+                <svg class="segundopremolarderecho diente" data-nombre="Segundo Premoral Superior Derecho" style="position: absolute;width: 36px;height: 38px;margin-top: 72px;margin-left: -63px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 272.4 269.2" enable-background="new 0 0 272.4 269.2" xml:space="preserve">
+                <path style="display:none;" data-position="2" transform="rotate(-8 60 60)" d="M167.7,103.1V43.6c-6.6-0.9-13.1-1.4-19.4-1.8c-14.9-1.1-29.5-2.9-43.6-0.3v61.7H167.7z" />
+                <path style="display:none;" data-position="6" transform="rotate(-8 60 60)" d="M167.7,166.1h58.1c1.2-6.5,2.2-13.2,3.2-20.1c2-14.2,0.8-28.8-2.6-42.9h-58.7V166.1z" />
+                <path style="display:none;" data-position="8" transform="rotate(-8 60 60)" d="M104.7,166.1V226c6.6,0.9,13.9,1.8,21.9,2.5c15.2,1.4,27.7,0.3,41.2-3.4v-59H104.7z" />
+                <path style="display:none;" data-position="4" transform="rotate(-8 60 60)" d="M104.7,166.1v-63H49.2c-2,7.7-3.6,15.4-5,22.7c-2.6,13.6-2.1,27.6-0.1,40.3L104.7,166.1z" />
+                <rect style="display:none;" data-position="5" transform="rotate(-8 60 60)" x="104.7" y="103.1" width="63" height="63" />
+                <path style="display:none;" data-position="3" transform="rotate(-8 60 60)" d="M167.7,43.6v59.5h58.7c-2.7-11.2-6.8-22.1-11.8-32.3C205.4,52.3,186.7,46.2,167.7,43.6z" />
+                <path style="display:none;" data-position="1" transform="rotate(-8 60 60)" d="M104.7,41.4c-9,1.6-17.8,5-26.4,11.5c-15.9,12.1-24,31-29.1,50.1h55.4V41.4z" />
+                <path style="display:none;" data-position="9" transform="rotate(-8 60 60)" d="M167.7,225.1c8.6-2.3,17.6-5.6,28.1-9.9c18.6-7.6,25.7-26.5,30-49.1h-58.1V225.1z" />
+                <path style="display:none;" data-position="7" transform="rotate(-8 60 60)" d="M44.1,166.1c3,18.3,9.2,33.8,14.2,41c7,10.2,22.1,15.4,46.3,18.9v-59.9H44.1z" />
+            </svg>
+                <svg class="segundopremolarizquerdo diente" data-nombre="Segundo Premoral Superior Izquierdo" style="position: absolute;width: 37px;height: 46px;margin-top: 65px;margin-left: -222px; cursor:pointer;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+                <path style="display:none;" data-position="2" transform="rotate(8 60 60)" d="M235.212,325.229V191.551c14.828-2.022,29.432-3.146,43.586-4.044c33.475-2.472,66.276-6.516,97.955-0.674v138.621H235.212V325.229z" />
+                <path style="display:none;" data-position="4" transform="rotate(8 60 60)" d="M235.212,466.771H104.679c-2.696-14.604-4.943-29.656-7.189-45.158c-4.493-31.903-1.798-64.705,5.841-96.383h131.882V466.771L235.212,466.771z" />
+                <path style="display:none;" data-position="8" transform="rotate(8 60 60)" d="M376.753,466.771v134.577c-14.828,2.022-31.229,4.045-49.202,5.617c-34.149,3.146-62.233,0.674-92.564-7.639V466.771H376.753z" />
+                <path style="display:none;" data-position="6" transform="rotate(8 60 60)" d="M376.753,466.771V325.229h124.691c4.494,17.3,8.089,34.599,11.233,51c5.842,30.555,4.719,62.009,0.226,90.542H376.753z" />
+                <rect style="display:none;" data-position="5" transform="rotate(8 60 60)" x="235.212" y="325.229" width="141.541" height="141.542" />
+                <path style="display:none;" data-position="1" transform="rotate(8 60 60)" d="M235.212,191.551v133.678H103.33c6.066-25.163,15.278-49.652,26.512-72.568C150.511,211.097,192.524,197.392,235.212,191.551z" />
+                <path style="display:none;" data-position="3" transform="rotate(8 60 60)" d="M376.753,186.608c20.221,3.595,39.991,11.233,59.313,25.837c35.723,27.185,53.921,69.648,65.379,112.56H376.978V186.608H376.753z" />
+                <path style="display:none;" data-position="7" transform="rotate(8 60 60)" d="M235.212,599.326c-19.322-5.168-39.542-12.582-63.133-22.242c-41.788-17.075-57.74-59.538-67.4-110.313h130.533V599.326L235.212,599.326z" />
+                <path style="display:none;" data-position="9" transform="rotate(8 60 60)" d="M512.903,466.771c-6.74,41.115-20.67,75.938-31.903,92.115c-15.728,22.916-49.652,34.599-104.022,42.462V466.771H512.903z" />
+            </svg>
+
+
+                <!--DIENTE Inferiores-->
+
+
+
+
+            </div>
+        </fieldset>
+    }
+}
+else
+{
+    using (Html.BeginForm("Update", "PACIENTE", null, FormMethod.Post, new { @class = "well", @style = "margin-top: 40px;" }))
+    {
+        List<string> arreglo = null;
+        <fieldset>
+            <legend>Detalle de la consulta</legend>
+            <input type="hidden" id="update" value="true" />
+            <div class="col-md-4 col-md-offset-4">
+                <img src="~/images/dientes_adultos2.png" />
+                @if (Model.hist != null && Model.hist.Count != 0)
+                {
+                    arreglo = new List<string>();
+                    foreach (odonto.Models.HISTORIAL hi in Model.hist)
+                    {
+                        @Html.Raw(hi.SVG_PACIENTE)
+                        arreglo.Add(hi.DIENTE);
+                    }
+                }
+                @foreach (KeyValuePair<string, string> dict in Model.listaSvg)
+                {
+                    bool validation = false;
+                    foreach (odonto.Models.HISTORIAL hi in Model.hist)
+                    {
+                        if (dict.Key == hi.DIENTE)
+                        {
+                            validation = true;
+                        }
+                    }
+
+                    if (validation == false)
+                    {
+                        @Html.Raw(dict.Value);
+                    }
+                }
+            </div>
+        </fieldset>
+    }
+}
+

@@ -1,0 +1,53 @@
+﻿@model List<odonto.Models.RECIBO>
+
+@if (Model != null && Model.Count != 0)
+{
+    <div class="col-md-6 col-md-offset-3">
+        <h1 style="text-align:center;margin-bottom: 40px;">Estatus de Pago por Aseguradora</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Factura</th>
+                <th>Número de Cita</th>
+                <th>Nombre y Apellido</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Estatus</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (odonto.Models.RECIBO re in Model)
+            {
+                <tr>
+                    <td>@re.ID</td>
+                    <td>@re.CITA.ID</td>
+                    <td>@re.PACIENTE_ASEGURADORA.PACIENTE.NOMBRE @re.PACIENTE_ASEGURADORA.PACIENTE.APELLIDO</td>
+                    <td>@re.FECHA</td>
+                    <td>@re.MONTO</td>
+                    <td>
+                        @if (re.ESTATUS == "ENVIADO")
+                        {
+                            <span style="color:#E6EE01">@re.ESTATUS</span>
+                        }
+                        @if (re.ESTATUS == "APROBADO")
+                        {
+                            <span style="color:green">@re.ESTATUS</span>
+                        }
+                        @if (re.ESTATUS == "RECHAZADO")
+                        {
+                            <span style="color:red">@re.ESTATUS</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert-warning">No hay pacientes registrados en esa aseguradora.</div>
+}
+
+
+

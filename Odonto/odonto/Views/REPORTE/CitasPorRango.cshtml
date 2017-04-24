@@ -1,0 +1,33 @@
+﻿@model List<odonto.Models.CITA>
+
+@if(Model != null && Model.Count != 0)
+{
+    <div class="col-md-6 col-md-offset-3">
+        <h1 style="text-align:center;margin-bottom: 40px;">Citas Por Rango de Fechas</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Cita</th>
+                <th>Doctor</th>
+                <th>Paciente</th>
+                <th>Tipo de Pago</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (odonto.Models.CITA ci in Model)
+            {
+                <tr>
+                    <td>@ci.ID</td>
+                    <td>@ci.DOCTOR.NOMBRE @ci.DOCTOR.APELLIDO</td>
+                    <td>@ci.PACIENTE.NOMBRE @ci.PACIENTE.APELLIDO</td>
+                    <td>@ci.TIPO_COBRO</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert-warning">No hay citas registradas en el sistema.</div>
+}

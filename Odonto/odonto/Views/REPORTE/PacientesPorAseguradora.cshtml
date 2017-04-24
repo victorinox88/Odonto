@@ -1,0 +1,33 @@
+﻿@model List<odonto.Models.PACIENTE>
+
+@if (Model != null && Model.Count != 0)
+{
+    <div class="col-md-6 col-md-offset-3">
+        <h1 style="text-align:center;margin-bottom: 40px;">Pacientes por Aseguradora</h1>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre y Apellido</th>
+                <th>Cedula</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Fecha de Ingreso</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (odonto.Models.PACIENTE pa in Model)
+            {
+                <tr>
+                    <td>@pa.NOMBRE @pa.SEGUNDO_NOMBRE @pa.APELLIDO @pa.SEGUNDO_APELLIDO</td>
+                    <td>@pa.CEDULA</td>
+                    <td>@pa.FECHA_NACIMIENTO</td>
+                    <td>@pa.FECHA_INGRESO</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert-warning">No hay pacientes registrados en esa aseguradora.</div>
+}

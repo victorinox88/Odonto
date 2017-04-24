@@ -1,0 +1,292 @@
+﻿@model odonto.Models.PacienteViewModel
+
+@{
+    ViewBag.Title = "Details";
+    bool validacion = false;
+    bool valiadcion2 = false;
+}
+
+<h2>Consutar Paciente</h2>
+
+@if (Model != null)
+{
+    <div class="well">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-4">
+                <h2 style="padding-left: 15%;margin-bottom: 30px;">Datos Basicos</h2>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <dl class="dl-horizontal" style="float:right;">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.NOMBRE)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.NOMBRE)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.APELLIDO)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.APELLIDO)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+                        </dt>
+
+                        <dd>
+                            @Convert.ToDateTime(Model.FECHA_NACIMIENTO).ToString("dd/MM/yyyy")
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SEXO)
+                        </dt>
+
+                        <dd>
+                            @(Model.SEXO == "M" ? "Masculino" : "Femenino")
+                        </dd>
+                        @if (Model.paciente_asegu != null && Model.paciente_asegu.Count != 0)
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => model.seguro)
+                            </dt>
+
+                            <dd>
+                                @foreach (odonto.Models.PACIENTE_ASEGURADORA pa in Model.paciente_asegu)
+                                {
+                                    @pa.ASEGURADORA.NOMBRE
+                                }
+                            </dd>
+                        }
+                        
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SEGUNDO_NOMBRE)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SEGUNDO_NOMBRE)b
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SEGUNDO_APELLIDO)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SEGUNDO_APELLIDO)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FECHA_INGRESO)
+                        </dt>
+
+                        <dd>
+                            @Model.FECHA_INGRESO.ToString()
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.familiar)
+                        </dt>
+                        <dd>
+                            @if (Model.familiar != null)
+                            {
+                                @Model.familiar.NOMBRE @Model.familiar.APELLIDO
+                            }
+                            else
+                            {
+                                <span>-</span>
+                            }
+                        </dd>
+                        @if (Model.paciente_asegu != null && Model.paciente_asegu.Count != 0)
+                        {
+                            <dt>
+                                @Html.DisplayNameFor(model => model.cobertura)
+                            </dt>
+
+                            <dd>
+                                @foreach (odonto.Models.PACIENTE_ASEGURADORA pa in Model.paciente_asegu)
+                                {
+                                    decimal valor = pa.COBERTURA - (pa.CONSUMIDO == null ? 0 : Convert.ToDecimal(pa.CONSUMIDO));
+                                    <span>@valor Bfs.</span>
+                                }
+                            </dd>
+                        }
+                    </dl>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <h2 class="col-md-5 col-md-offset-4">Alergia</h2>
+                    
+                    @foreach (odonto.Models.PACIENTE_ENFERMEDAD pe in Model.Enfermedades)
+                    {
+                        if (pe.ENFERMEDAD.TIPO == "A ")
+                        {
+                            validacion = true;
+                        }
+                        else
+                        {
+                            valiadcion2 = true;
+                        }
+                    }
+                    @if (validacion == true)
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (odonto.Models.PACIENTE_ENFERMEDAD pe in Model.Enfermedades)
+                                {
+                                    if (pe.ENFERMEDAD.TIPO == "A ")
+                                    {
+                                        <tr>
+                                            <td>@pe.ENFERMEDAD.NOMBRE</td>
+                                            <td>@pe.ENFERMEDAD.DESCRIPCION</td>
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info col-md-12" role="alert">
+                            No posee alergias registradas en el sistema
+                        </div>
+                    }
+                </div>
+                <div class="col-md-6">
+                    <h2 class="col-md-5 col-md-offset-4">Enfermedad</h2>
+                    @if (valiadcion2 == true)
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Descripcion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (odonto.Models.PACIENTE_ENFERMEDAD pe in Model.Enfermedades)
+                                {
+                                    if (pe.ENFERMEDAD.TIPO == "E")
+                                    {
+                                        <tr>
+                                            <td>@pe.ENFERMEDAD.NOMBRE</td>
+                                            <td>@pe.ENFERMEDAD.DESCRIPCION</td>
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info col-md-12" role="alert">
+                            No posee enfermedades registradas en el sistema
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("HistorialPartial", Model)
+
+    <div class="modal fade" id="modalhistorial" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Selector de Tratamiento</h4>
+                </div>
+                <div class="modal-body" id="bodymodal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 style="text-align: center;">Nombre del Diente</h4>
+                            <div class="col-md-6 col-md-offset-3" id="svg"></div>
+                        </div>
+                        <div class="col-md-6" style="margin-top:50px;">
+                            <div class="form-group" style="margin-bottom:45px;">
+                                @Html.LabelFor(model => model.Id_TRATAMIENTO, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownList("ID_TRATAMIENTO", null, "Seleccione..", htmlAttributes: new { @class = "form-control select2", @style = "width:194px;" })
+                                    @Html.ValidationMessageFor(model => model.ID_PACIENTE, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:95px;">
+                                @Html.Label("Color", htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    <input id="color" class="form-control jscolor" value="000000" style="width:194px;" />
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-bottom:148px;">
+                                @Html.LabelFor(model => model.FECHA_TRATA, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-7" style="padding-right:35px;">
+                                    <div class="input-group date">
+                                        @Html.EditorFor(model => model.FECHA_TRATA, new { htmlAttributes = new { @class = "form-control", @placeholder = "dd/mm/aaaa" } })
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="diente" />
+                            <input type="hidden" id="dienteReal" />
+                            <input type="hidden" id="position" />
+                            <input type="hidden" id="check" />
+                            <div class="form-group" style="margin-bottom:220px;">
+                                @Html.LabelFor(model => model.descripcion, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.TextAreaFor(model => model.descripcion, htmlAttributes: new { @class = "form-control", @style = "width:194px;" })
+                                    @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
+                                    <input type="hidden" id="id_historia" name="id_historia" value="0" />
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom:50px;">
+                                <a class="btn btn-success" style="margin-left:15px;" id="agregar_tr_diente">Agregar</a>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <table class="table" id="tablaHistoria">
+                                <thead>
+                                    <tr>
+                                        <th>Tratamiento</th>
+                                        <th>Diente</th>
+                                        <th>Color</th>
+                                        <th>Fecha</th>
+                                        <th>Descripcion</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="close" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <a id="save" class="btn btn-primary">Guardar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modificar", "Edit", new { id = Model.ID }, new { @class = "btn btn-default" })
+        
+        @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
+    </p>
+}
+else
+{
+    <div class="alert-warning">No hay usuarios registrados en el sistema.</div>
+}
+

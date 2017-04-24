@@ -1,0 +1,92 @@
+﻿@model odonto.Models.PacienteViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Borrar Paciente</h2>
+
+<div class="well">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEGUNDO_NOMBRE)
+        </dt>
+
+        <dd>
+            @(string.IsNullOrEmpty(Model.SEGUNDO_NOMBRE)?"-":Model.SEGUNDO_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEGUNDO_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SEGUNDO_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_NACIMIENTO)
+        </dt>
+
+        <dd>
+           @Convert.ToDateTime(Model.FECHA_NACIMIENTO).ToString("dd-MM-yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FECHA_INGRESO)
+        </dt>
+
+        <dd>
+            @Convert.ToDateTime(Model.FECHA_INGRESO).ToString("dd-MM-yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SEXO)
+        </dt>
+
+        <dd>
+            @(Model.SEXO == "M" ? "Masculino" : "Femenino")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.familiar)
+        </dt>
+
+        <dd>
+            @if (Model.familiar != null)
+            {
+                @Model.familiar.NOMBRE @Model.familiar.APELLIDO
+            }
+            else
+            {
+                <span>-</span>
+            }
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" />
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

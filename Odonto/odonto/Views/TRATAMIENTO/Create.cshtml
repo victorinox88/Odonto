@@ -1,0 +1,81 @@
+﻿@model odonto.Models.TratamientoViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Crear Tratamiento</h2>
+<div id="mensaje"></div>
+@using (Html.BeginForm("Create", "TRATAMIENTO", null, FormMethod.Post, new { @class = "well", @style = "margin-top: 40px;", @id = "crear-tratamiento" }))
+{
+    <fieldset>
+        <legend>Datos Basicos</legend>
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <div class="row">
+                <div class="col-md-5">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NOMBRE, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NOMBRE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DESCRIPCION, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.DESCRIPCION, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DESCRIPCION, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            <input id="color" class="form-control jscolor" value="000000"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MONTO, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.MONTO, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.diente, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(m => m.diente, Model.listaDIENTE, null, new { @class = "form-control select2", @multiple = "multiple" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Crear" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1" style="padding-left:0px;">
+                    <a class="btn btn-success" id="nueva-tratamiento" style="margin-top:49px;">Agregar  <i class="glyphicon glyphicon-arrow-right"></i></a>
+                </div>
+                <div class="col-md-6 table-responsive">
+                    <table class="table" id="tabla-nueva-tratamiento">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Color</th>
+                                <th>Diente</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
+</div>

@@ -1,0 +1,177 @@
+﻿@model odonto.Models.PagoViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pago de Consulta</h2>
+
+<div id="mensaje"></div>
+@using (Html.BeginForm("Create", "Pago", null, FormMethod.Post, new { @class = "well", @style = "margin-top: 40px;", @id = "crear-pago" }))
+{
+    <div class="form-horizontal">
+        <div class=row>
+            <div class="col-md-6 col-md-offset-3" style="margin-bottom: 40px;">
+                <div class="form-group">
+                    @Html.Label("Cita", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.DropDownList("ID_CITA", null, "Seleccione..", htmlAttributes: new { @class = "form-control select2" })
+                        <input type="hidden" id="id_paciente" value=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Doctor:", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8" style="margin-top:6px;">
+                            <span id="doctor"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Fecha:", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8" style="margin-top:6px;">
+                            <span id="fecha"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" id="cobertura" style="display:none;">
+                        @Html.Label("Cobertura:", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8" style="margin-top:6px;">
+                            <span id="cober"></span>
+                            <input id="coberReal" type="hidden" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Paciente:", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8" style="margin-top:6px;">
+                            <span id="paciente"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Pagar por:", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(m => m.id_tipocobro, Model.TipoCobro, "Seleccione..", htmlAttributes: new { @class = "form-control select2" })
+                        </div>
+                    </div>
+                    <div class="form-group" id="div_seguro" style="display:none;">
+                        @Html.Label("Seguro", htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8" id="idase"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6 col-md-offset-4" style="margin-bottom: 20px; margin-top:20px;">
+                    <h3>Tratamientos realizados</h3>
+                </div>
+                <div class="col-md-12">
+                    <table class="table" id="tabla_detalle_tratamiendo">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">Tratamiento</th>
+                                <th style="text-align:center">Diente</th>
+                                <th style="text-align:center">Monto</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <input type="hidden" id="monto" name="monto" value="0"/>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <a id="registrar_pago" class="btn btn-primary" style="margin-top:20px; margin-right:20px; float: right; display:none;">Enviar Factura</a>
+                <a id="Pago" class="btn btn-success" style="margin-top:20px; margin-right:10px; float: right; display:none;">Registrar Pago</a>
+            </div>
+        </div>
+    </div>
+
+}
+<div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Registro de Pago</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IdTipoPago, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(m => m.IdTipoPago, Model.listaTipoPago, "Seleccione", htmlAttributes: new { @class = "form-control " })
+                                @Html.ValidationMessageFor(model => model.listaTipoPago, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group tipos credito" style="display:none;">
+                            @Html.LabelFor(model => model.idTipoTarjeta, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(m => m.idTipoTarjeta, Model.listaTipoTarjeta, "Seleccione", htmlAttributes: new { @class = "form-control " })
+                                @Html.ValidationMessageFor(model => model.listaTipoTarjeta, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group tipos cheque" style="display:none;">
+                            @Html.LabelFor(model => model.numeroCheque, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.numeroCheque, new { htmlAttributes = new { @class = "form-control"} })
+                                @Html.ValidationMessageFor(model => model.numeroCheque, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group tipos comprobante" style="display:none;">
+                            @Html.LabelFor(model => model.numeroComprobante, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.numeroComprobante, new { htmlAttributes = new { @class = "form-control"} })
+                                @Html.ValidationMessageFor(model => model.numeroComprobante, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.montoTotal, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.montoTotal, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                                @Html.ValidationMessageFor(model => model.montoTotal, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.montoRestante, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.montoRestante, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                                @Html.ValidationMessageFor(model => model.montoRestante, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.montoPagado, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.montoPagado, new { htmlAttributes = new { @class = "form-control"} })
+                                @Html.ValidationMessageFor(model => model.montoPagado, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-4" style="margin-bottom: 20px; margin-top: 20px;">
+                                <a class="btn btn-primary" id="agregarPago" style="float:right;"> Agregar Pago</a>
+                            </div>
+                        </div>
+                        <table class="table" id="tablaPago">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">Tipo Pago</th>
+                                    <th style="text-align:center;">Tipo Tarjeta</th>
+                                    <th style="text-align:center;">Número de Cheque</th>
+                                    <th style="text-align:center;">Número de Comprobante</th>
+                                    <th style="text-align:center;">Monto Pagado</th>
+                                    <th style="text-align:center;">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align:center;"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

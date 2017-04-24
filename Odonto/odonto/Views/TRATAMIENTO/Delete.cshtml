@@ -1,0 +1,54 @@
+﻿@model odonto.Models.TRATAMIENTO
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Borrar Tratamiento</h2>
+
+<div class="well">
+ 
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DESCRIPCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DESCRIPCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COLOR)
+        </dt>
+
+        <dd style="color:#@Model.COLOR;">
+            @Html.DisplayFor(model => model.COLOR)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTATUS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTATUS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> 
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

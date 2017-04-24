@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<a class="hiddenanchor" id="toregister"></a>
+<a class="hiddenanchor" id="tologin"></a>
+<div id="wrapper">
+    <div id="login" class="form">
+        <section class="login_content">
+            @using (Html.BeginForm("Index", "HOME", null, FormMethod.Post))
+            {
+                <h1>NEOODONTO</h1>
+                <div>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" />
+                </div>
+                <div>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="" />
+                </div>
+                <div style="margin-bottom: 20px; color: red;">
+                    <span>@ViewBag.message</span>
+                </div>
+                <div>
+                    <button class="btn btn-primary ">Iniciar Sesión</button>
+                </div>
+                <div class="clearfix"></div>
+            }
+                
+        </section>
+    </div>
+    
+</div>
+

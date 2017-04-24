@@ -1,0 +1,55 @@
+﻿@model odonto.Models.CITA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Borrar Cita</h2>
+
+<div class="well">
+    <h4>Datos</h4>
+    <dl class="dl-horizontal">
+
+        <dt>
+            Doctor
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOCTOR.NOMBRE)
+        </dd>
+
+        <dt>
+            Paciente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PACIENTE.NOMBRE)
+        </dd>
+
+        <dt>
+            Fecha
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FECHA)
+        </dd>
+
+        <dt>
+            Estatus
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTATUS)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> 
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

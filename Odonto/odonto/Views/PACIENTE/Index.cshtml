@@ -1,0 +1,110 @@
+﻿@model IEnumerable<odonto.Models.PACIENTE>
+
+@{
+    ViewBag.Title = "Paciente";
+}
+
+<h2>Paciente</h2>
+
+<p>
+    @Html.ActionLink("Nuevo Paciente", "Create")
+</p>
+<table id="table-paciente" style="text-align:center;" class="table table-striped table-bordered datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th style="text-align: center;">
+                Primer Nombre
+            </th>
+            <th style="text-align: center;">
+                Segundo Nombre
+            </th>
+            <th style="text-align: center;">
+                Primer Apellido
+            </th>
+            <th style="text-align: center;">
+                Segundo Apellido
+            </th>
+            <th style="text-align: center;">
+                Fecha de Nacimiento
+            </th>
+            <th style="text-align: center;">
+                Fecha de Ingreso
+            </th>
+            <th style="text-align: center;">
+                Sexo
+            </th>
+            <th style="text-align: center;">
+                Familiar
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th style="text-align: center;">
+                Primer Nombre
+            </th>
+            <th style="text-align: center;">
+                Segundo Nombre
+            </th>
+            <th style="text-align: center;">
+                Primer Apellido
+            </th>
+            <th style="text-align: center;">
+                Segundo Apellido
+            </th>
+            <th style="text-align: center;">
+                Fecha de Nacimiento
+            </th>
+            <th style="text-align: center;">
+                Fecha de Ingreso
+            </th>
+            <th style="text-align: center;">
+                Sexo
+            </th>
+            <th style="text-align: center;">
+                Familiar
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOMBRE)
+                </td>
+                <td>
+                    @(string.IsNullOrEmpty(item.SEGUNDO_NOMBRE) ? "-" : item.SEGUNDO_NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.APELLIDO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SEGUNDO_APELLIDO)
+                </td>
+                <td>                    
+                    @item.FECHA_NACIMIENTO.ToString("dd-MM-yyyy")
+                </td>
+                <td>
+                    @item.FECHA_INGRESO.ToString("dd-MM-yyyy")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SEXO)
+                </td>
+                <td>
+                    @(item.PACIENTE2 != null ? item.PACIENTE2.NOMBRE : "-")
+                </td>
+                <td style="width: 76px;">
+                    <a href="/PACIENTE/Edit/@item.ID" style="color:#190;"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a href="/PACIENTE/Details/@item.ID"><i class="glyphicon glyphicon-search"></i></a>
+                    <a href="/PACIENTE/Delete/@item.ID" style="color:#e11;"><i class="glyphicon glyphicon-remove"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

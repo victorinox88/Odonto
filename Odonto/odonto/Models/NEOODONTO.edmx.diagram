@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e408aee7e40d4733ac59a0c2feb2dcf5" Name="Diagram1" ZoomLevel="46">
+        <EntityTypeShape EntityType="NEOODONTOModel.ASEGURADORA" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.BANCO" Width="1.5" PointX="12.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.CITA" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.CONTRATO" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.DETALLE_CONTARTO" Width="1.5" PointX="10.5" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.DETALLE_HISTORIAL" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.DIENTE" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.DIRECCION" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.DOCTOR" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.DOCTOR_INTITUCION" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.DOCTOR_SECRETARIA" Width="1.5" PointX="8.25" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.ENFERMEDAD" Width="1.5" PointX="9.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.GERENTE" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.HISTORIAL" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.INSTITUCION" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.MODULO" Width="1.5" PointX="3.75" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.PACIENTE" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.PACIENTE_ASEGURADORA" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.PACIENTE_ENFERMEDAD" Width="1.5" PointX="12" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.PAGO" Width="1.5" PointX="12.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.PAGO_TIPO" Width="1.5" PointX="15" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.RECIBO" Width="1.5" PointX="10.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.RELACION_TELEFONO" Width="1.5" PointX="8.25" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.ROL" Width="1.5" PointX="0.75" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.ROL_MODULO" Width="1.5" PointX="6" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.SECRETARIA" Width="1.5" PointX="3" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.sysdiagram" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.TELEFONO" Width="1.5" PointX="6" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.TIPOPAGO" Width="1.5" PointX="12.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.TRATA_DIENTE" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NEOODONTOModel.TRATAMIENTO" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="NEOODONTOModel.FK_ASEGURADORA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_CONTRATO_ASEGURADORA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_BANCO" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_CITA_DOCTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_CITA_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_HISTORIAL_CITA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_RECIBO_CITA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_CONTRATO" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_CONTRATO_DOCTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_CONTRATO_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DETALLE_HISTORIAL_HISTORIAL" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DETALLE_HISTORIAL_TRATA_DIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DIRECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DOCTOR_DIRECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_GERENTE_DIRECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PACIENTE_DIRECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_SECRETARIA_DIRECCION" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DOCTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DOCTOR_DOCTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DOCTOR_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DOCTOR_SECRETARIA_DOCTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_TELEFONO_DOCTOR" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_INSTITUCION" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_DOCTOR_SECRETARIA_SECRETARIA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PACIENFER_ENFERMEDAD" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_GERENTE_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_TELEFONO_GERENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PACIENTE_HISTORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_ROLMODULO_MODULO" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PACIENFER_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PACIENTE_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_TELEFONO_PACIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_RECIBO_PACIENTE_ASEGURADORA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PAGO_RECIBO" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PAGOTIPO_PAGO" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_PAGOTIPO_TIPOPAGO" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_TELEFONO" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_TELEFONO_SECRETARIA" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_ROLMODULO_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_SECRETARIA_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="NEOODONTOModel.FK_TRATAMIENTO" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

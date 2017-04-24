@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    string calendar = ViewBag.calendario;
+}
+
+<div class="row">
+    <div class="col-md-8" style="padding-bottom: 20px;">
+        <h2>CITA</h2>
+    </div>
+    @switch (calendar)
+    {
+        case "Pedro":
+            <div class="col-md-12">
+                <iframe src="https://calendar.google.com/calendar/embed?src=odontotig2%40gmail.com&ctz=America/Caracas" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+            break;
+
+        case "Sandra":
+            <div class="col-md-12">
+                <iframe src="https://calendar.google.com/calendar/embed?src=odontotig3%40gmail.com&ctz=America/Caracas" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+            break;
+        case "Luisa":
+            <div class="col-md-12">
+                <iframe src="https://calendar.google.com/calendar/embed?src=odontotig%40gmail.com&ctz=America/Caracas" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+            break;
+        case "Luisa2":
+            <div class="col-md-12">
+                <iframe src="https://calendar.google.com/calendar/embed?src=odontotig1%40gmail.com&ctz=America/Caracas" style="border: 0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+            break;
+
+    }
+
+
+</div>
